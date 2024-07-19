@@ -3,13 +3,35 @@
     "target": "ESNext",
     "module": "commonjs",
     "allowJs": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
     "noImplicitAny": true,
     "sourceMap": true,
-    "baseUrl": ".",
     "outDir": "dist",
     "moduleResolution": "node",
-    "resolveJsonModule": true
-  }
+    "strict": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": [
+      "node", 
+      "vue", 
+      "vite/client", 
+      "vitest/globals"
+    ]
+  },
+  "include": [
+    "**/*.d.ts", 
+    "@/**/*.ts",
+    "@/**/*.tsx", 
+    "@/**/*.vue"
+  ],
+  "exclude": ["node_modules"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

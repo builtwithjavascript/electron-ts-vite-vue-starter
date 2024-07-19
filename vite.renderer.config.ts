@@ -1,6 +1,8 @@
 import type { ConfigEnv, UserConfig } from 'vite'
 import { defineConfig } from 'vite'
-import { pluginExposeRenderer } from './vite.base.config'
+import path from 'path'
+import { fileURLToPath, URL } from 'url'
+import { pluginExposeRenderer } from './vite.base.config.js'
 import VuePlugin from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config
@@ -18,7 +20,11 @@ export default defineConfig((env) => {
     },
     plugins: [pluginExposeRenderer(name), VuePlugin()],
     resolve: {
-      preserveSymlinks: true
+      preserveSymlinks: true,
+      alias: {
+        '@': path.resolve(__dirname, './src')
+        //'@': fileURLToPath(new URL('./src', import.meta.url)),
+      }
     },
     clearScreen: false
   } as UserConfig

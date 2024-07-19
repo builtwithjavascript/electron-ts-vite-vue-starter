@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "include": [ 
+    "**/*.ts", 
+    "**/*.d.ts", 
+    "**/*.vue", 
+    "**/*.d.vue", 
+    "vite.base.config.ts", 
+    "vite.main.config.ts", 
+    "vite.preload.config.ts", 
+    "vite.renderer.config.ts", 
+    "vite.standalone.config.mts"
+  ]
+}

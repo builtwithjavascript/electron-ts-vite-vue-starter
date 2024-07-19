@@ -1,6 +1,8 @@
 import { builtinModules } from 'node:module'
 import type { AddressInfo } from 'node:net'
 import type { ConfigEnv, Plugin, UserConfig } from 'vite'
+import path from 'path'
+import { fileURLToPath, URL } from 'url'
 import pkg from './package.json'
 
 export const builtins = ['electron', ...builtinModules.map((m) => [m, `node:${m}`]).flat()]
@@ -24,7 +26,14 @@ export function getBuildConfig(env: ConfigEnv<'build'>): UserConfig {
       watch: command === 'serve' ? {} : null,
       minify: command === 'build'
     },
-    clearScreen: false
+    clearScreen: false,
+    envDir: './src/',
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src')
+        //'@': fileURLToPath(new URL('./src', import.meta.url)),
+      }
+    }
   }
 }
 
