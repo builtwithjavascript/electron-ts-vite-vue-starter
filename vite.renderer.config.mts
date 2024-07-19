@@ -2,7 +2,7 @@ import type { ConfigEnv, UserConfig } from 'vite'
 import { defineConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath, URL } from 'url'
-import { pluginExposeRenderer } from './vite.base.config.js'
+import { pluginExposeRenderer } from './vite.base.config.mjs'
 import VuePlugin from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config
