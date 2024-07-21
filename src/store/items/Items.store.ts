@@ -1,0 +1,88 @@
+// file: src/store/items/Items.store.ts
+import { reactive } from 'vue'
+import { ItemsStateInterface } from './models'
+import { ItemInterface } from '@/models'
+
+const data: ItemInterface[] = [
+  {
+    id: 1,
+    name: 'Item 1',
+    selected: false
+  },
+  {
+    id: 2,
+    name: 'Item 2',
+    selected: false
+  },
+  {
+    id: 3,
+    name: 'Item 3',
+    selected: false
+  },
+  {
+    id: 4,
+    name: 'Item 4',
+    selected: false
+  },
+  {
+    id: 5,
+    name: 'Item 5',
+    selected: false
+  }
+]
+
+// the items module state
+const itemsState = reactive<ItemsStateInterface>({
+  loading: false,
+  items: []
+})
+
+// the items store actions implementation:
+const actions = {
+  // action that we invoke to load the items from an api:
+  loadItems: async () => {
+    // set loading to true and clear current data:
+    itemsState.loading = true
+    itemsState.items = []
+
+    // invoke our API cient fetchItems to load the data from an API end-point
+    //const data = await apiClient.items.fetchItems()
+    itemsState.items = data
+    itemsState.loading = false
+  },
+
+  // action that we'll invoke from our component to select/unselect a specific item
+  toggleItemSelected: async (id: number) => {
+    console.log('ItemsStore: action: toggleItemSelected', id)
+    const item = (itemsState.items || []).find((o) => o.id === id)
+    if (item) {
+      item.selected = !item.selected
+    }
+  }
+}
+
+// the items store getters implementation
+// these will be consumed in the components
+const getters = {
+  get loading() {
+    return itemsState.loading
+  },
+  get items() {
+    return itemsState.items
+  }
+}
+
+// infer the items store interface:
+export interface ItemsStoreInterface {
+  getters: typeof getters
+  actions: typeof actions
+}
+
+// hook that will use to consume the items store in other code
+export function useItemsStore(): ItemsStoreInterface {
+  // return our store intance implementation
+  return {
+    getters,
+    actions
+  }
+}

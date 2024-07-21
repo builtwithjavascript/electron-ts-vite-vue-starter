@@ -7,15 +7,16 @@
     "resolveJsonModule": true
   },
   "include": [
-    "**/*.ts", 
-    "**/*.mts", 
-    "**/*.d.ts", 
-    "**/*.vue", 
-    "**/*.d.vue", 
+    "@/**/*.d.ts",
+    "@/**/*.d.vue",
+    "@/**/*.ts",
+    "@/**/*.mts", 
+    "@/**/*.tsx", 
+    "@/**/*.vue", 
     "vite.base.config.mts", 
     "vite.main.config.mts", 
     "vite.preload.config.mts", 
     "vite.renderer.config.mts", 
-    "vite.standalone.config.mts"
+    "vite.config.mts"
   ]
 }

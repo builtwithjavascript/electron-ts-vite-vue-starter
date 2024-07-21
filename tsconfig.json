@@ -26,8 +26,9 @@
       "vitest/globals"
     ]
   },
-  "include": [
-    "**/*.d.ts", 
+  "include": [ 
+    "@/**/*.d.ts",
+    "@/**/*.d.vue",
     "@/**/*.ts",
     "@/**/*.mts", 
     "@/**/*.tsx", 

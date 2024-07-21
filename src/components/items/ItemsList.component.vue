@@ -1,7 +1,7 @@
 // file: src/components/items/ItemsList.component.vue
 <script setup lang="ts">
 // import a reference to our ItemInterace
-import type { IItem } from '@/models'
+import type { ItemInterface } from '@/models'
 // import a reference to the Item component:
 import ItemComponent from './Item.component.vue'
 // import a reference to the Laoder component
@@ -9,7 +9,7 @@ import Loader from '@/components/primitives/loaders/ElLoader.primitive.vue'
 
 // expose our properties
 defineProps<{
-  items: IItem[]
+  items: ItemInterface[]
   loading: boolean
 }>()
 

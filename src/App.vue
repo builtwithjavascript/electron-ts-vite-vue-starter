@@ -1,59 +1,28 @@
 <script setup lang="ts">
-import { computed, reactive } from 'vue'
+import { computed, onMounted } from 'vue'
 import ItemsListComponent from '@/components/items/ItemsList.component.vue'
-// state
-const itemsState = reactive({
-  loading: false,
-  items: [
-    {
-      id: 1,
-      name: 'Item 1',
-      selected: false
-    },
-    {
-      id: 2,
-      name: 'Item 2',
-      selected: false
-    },
-    {
-      id: 3,
-      name: 'Item 3',
-      selected: false
-    },
-    {
-      id: 4,
-      name: 'Item 4',
-      selected: false
-    },
-    {
-      id: 5,
-      name: 'Item 5',
-      selected: false
-    }
-  ]
-})
+import { useAppStore } from '@/store'
 
-// the items store actions implementation:
-const toggleItemSelected = async (id: number) => {
-  console.log('toggleItemSelected', id)
-  const item = (itemsState.items || []).find((o) => o.id === id)
-  if (item) {
-    item.selected = !item.selected
-  }
-}
+const { itemsStore } = useAppStore()
+const { actions: itemsStoreActions } = itemsStore
 
 // computed:
 const items = computed(() => {
-  return itemsState.items
+  return itemsStore.getters.items
 })
 const loading = computed(() => {
-  return itemsState.loading
+  return itemsStore.getters.loading
 })
 
 // methods:
 const onSelectItem = (id: number) => {
-  toggleItemSelected(id)
+  itemsStoreActions.toggleItemSelected(id)
 }
+
+// lifecycle event handlers:
+onMounted(() => {
+  itemsStoreActions.loadItems()
+})
 </script>
 
 <template>

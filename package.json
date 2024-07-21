@@ -9,8 +9,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "build": "npx vue-tsc --noEmit && npx vite build --config vite.standalone.config.mts",
-    "dev": "npx vite --config vite.standalone.config.mts",
+    "build": "npx vue-tsc --noEmit && npx vite build --config vite.config.mts",
+    "dev": "npx vite --config vite.config.mts",
     "pretty:watch": "npx onchange \"**/*.*{ts,vue,svelte,tsx,css,scss,html}\" -- npx prettier --config .prettierrc --write --ignore-unknown {{changed}}",
     "pretty": "npx prettier --config .prettierrc --loglevel warn -w \"**/*.*{ts,vue,svelte,tsx,css,scss,html}\""
   },

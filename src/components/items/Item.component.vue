@@ -2,7 +2,7 @@
 // import reference to Vue's defineComponent
 import { defineComponent, computed, PropType } from 'vue'
 // import a reference to our ItemInterace
-import type { IItem } from '@/models'
+import type { ItemInterface } from '@/models'
 
 import ElText from '@/components/primitives/text/ElText.primitive.vue'
 import ElToggle from '@/components/primitives/toggles/ElToggle.primitive.vue'
@@ -16,9 +16,9 @@ export default defineComponent({
     ElToggle
   },
   props: {
-    // expose a property called model of type IItem
+    // expose a property called model of type ItemInterface
     model: {
-      type: Object as PropType<IItem>,
+      type: Object as PropType<ItemInterface>,
       default: () => {
         return {}
       }

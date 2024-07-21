@@ -1,6 +1,8 @@
 import type { ConfigEnv, UserConfig } from 'vite'
 import { defineConfig, mergeConfig } from 'vite'
 import { getBuildConfig, external, pluginHotRestart } from './vite.base.config.mjs'
+import path from 'path'
+import { fileURLToPath, URL } from 'url'
 
 // https://vitejs.dev/config
 export default defineConfig((env) => {
@@ -23,7 +25,13 @@ export default defineConfig((env) => {
         }
       }
     },
-    plugins: [pluginHotRestart('reload')]
+    plugins: [pluginHotRestart('reload')],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src')
+        //'@': fileURLToPath(new URL('./src', import.meta.url)),
+      }
+    }
   }
 
   return mergeConfig(getBuildConfig(forgeEnv), config)
